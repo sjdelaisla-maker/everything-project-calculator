@@ -99,9 +99,10 @@ if st.session_state.show_fission:
      F5 = m % 2
      F6 = (a + 1) % 2
      F="F"
-    st.success(
-  f"Auronic System Fission (-F) = 2F({F3}, {F4}) + {F5} M + {F6:.4f} A + Δm"
+     st.success(
+     f"Auronic System Fission (-F) = 2 F({F3}, {F4}) + {F5} M + {F6:.4f} A + Δm"
 )
+
 
 # --- Fusion EQUATION ---
 if "show_fusion" not in st.session_state:
