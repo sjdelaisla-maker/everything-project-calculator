@@ -66,6 +66,43 @@ if st.session_state.show_time:
             st.success(f"Time (t) = {t:.4f} years")
 
 
+# --- Fission EQUATION ---
+if "show_fission" not in st.session_state:
+    st.session_state.show_fission = False
+
+if st.button("Fission Equation"):
+    st.session_state.show_fission = not st.session_state.show_fission
+
+if st.session_state.show_fission:
+    st.latex(r"-F(a, m) = 2F(\lfloor\frac{a+1}{2}\rfloor, \lfloor\frac{m}{2}\rfloor) + (m \bmod 2) + [(a+1) \bmod 2] + \Delta m")
+    st.write("-F = Auronic System Fission")
+    st.write("m = Number of Middlouras")
+    st.write("a = Number of Aurons")
+
+    # --- INPUTS ---
+    m = st.number_input(
+        "Number of Middlouras (m)",
+        value=1.0,
+        min_value=0.0,
+        key="fission_m"
+    )
+    a = st.number_input(
+        "Number of Aurons (a)",
+        value=1.0,
+        min_value=0.0,
+        key="fission_a"
+    )
+    # --- CALCULATE BUTTON ---
+    if st.button("Calculate Fission", key="fission_calc"):
+     F3 = math.floor((a + 1) / 2)
+     F4 = math.floor(m / 2)
+     F5 = m % 2
+     F6 = (a + 1) % 2
+     F="F"
+    st.success(
+    f"Auronic System Fission (+F) = 2F({F3}, {F4}) + {F5}M + {F6:.4f}A + Δm"
+)
+
 # --- Fusion EQUATION ---
 if "show_fusion" not in st.session_state:
     st.session_state.show_fusion = False
