@@ -39,7 +39,7 @@ if st.button("Time Equation"):
     st.session_state.show_time = not st.session_state.show_time
 
 if st.session_state.show_time:
-    st.latex(r"t =\ln\left(m-M+1\right)")
+    st.latex(r"t = \lfloor\frac{100}{m}\rfloor \ln\left(m-M+1\right)")
     st.write("t = Time")
     st.write("M = Number of Desired Middlouras")
 
@@ -62,7 +62,7 @@ if st.session_state.show_time:
         if m < M:
             st.error("m must be greater than or equal to M.")
         else:
-            t = math.log(m - M + 1)
+            t = math.floor(100 / m) * math.log(m - M + 1)
             st.success(f"Time (t) = {t:.4f} years")
 
 
